@@ -9,5 +9,6 @@ lambda/dist
 package-lock.json
 *.tgz
 .gradle/
-logs
-data
+databases
+dbms
+*.log
