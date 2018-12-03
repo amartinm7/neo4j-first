@@ -10,6 +10,7 @@ class PersonService{
     return this.driver.session()
   }
   createTable(personName) {
+    const self = this
     console.log('createTable...')
     const session = this.getSession()
     const query = `CREATE (a:Person {name: $name}) RETURN a`
@@ -21,6 +22,7 @@ class PersonService{
       const node = singleRecord.get(0)
       console.log(`${JSON.stringify(node)}`)
       console.log(node.properties.name)
+      self.closeConnection()
     })
   }
   openConnection(settings){
