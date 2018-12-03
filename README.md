@@ -19,5 +19,11 @@ docker rm `docker ps -aq -f status=running`
 docker rm `docker ps -aq -f status=exited`
 ```
 
+for deleting images
+```$xslt
+docker images
+docker rmi imageID
+```
+
 # Operations Manual
 https://neo4j.com/docs/operations-manual/current/introduction/
