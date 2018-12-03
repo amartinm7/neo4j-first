@@ -13,5 +13,11 @@ npm install
 node index.js 
 ```
 
+for stopping docker
+```$xslt
+docker rm `docker ps -aq -f status=running`
+docker rm `docker ps -aq -f status=exited`
+```
+
 # Operations Manual
 https://neo4j.com/docs/operations-manual/current/introduction/
