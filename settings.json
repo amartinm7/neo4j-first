@@ -1,0 +1,11 @@
+{
+  "credentials": {
+    "user": "neo4j",
+    "password": "admin"
+  },
+  "uriConnection": {
+    "bolt" : "bolt://localhost:7687",
+    "HTTP" : "http://localhost:7474",
+    "HTTPS" : "https://localhost:7473"
+  }
+}
