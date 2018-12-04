@@ -27,7 +27,7 @@ node index.js
 ## Docker, for cleaning porpouses run these commands
 for stopping docker
 ```$xslt
-docker rm `docker ps -aq -f status=running`
+docker stop `docker ps -aq -f status=running`
 docker rm `docker ps -aq -f status=exited`
 ```
 
