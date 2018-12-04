@@ -3,19 +3,35 @@ const neo4j = require ('neo4j-driver').v1
 class PersonService{
   constructor(settings){
     console.log('hey you...')
-    this.driver = this.openConnection(settings)
+    this.settings = settings
+    this.driver = {}
   }
   getSession(){
     console.log('getSession...')
+    this.driver = this.openConnection(this.settings)
     return this.driver.session()
   }
-  createTable(personName) {
+  createTable(personName){
     const self = this
     console.log('createTable...')
     const session = this.getSession()
     const query = `CREATE (a:Person {name: $name}) RETURN a`
     const resultPromise = session.run(query, {name: personName})
     resultPromise.then( result => {
+      session.close()
+      console.log(`${JSON.stringify(result)}`)
+      const singleRecord = result.records[0]
+      const node = singleRecord.get(0)
+      console.log(`${JSON.stringify(node)}`)
+      console.log(node.properties.name)
+      self.closeConnection()
+    })
+  }
+  runBatch(batch){
+    const self = this
+    console.log('runBatch...')
+    const session = this.getSession()
+    const resultPromise = session.run(batch).then( result => {
       session.close()
       console.log(`${JSON.stringify(result)}`)
       const singleRecord = result.records[0]
